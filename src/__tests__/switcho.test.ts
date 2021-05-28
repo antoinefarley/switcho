@@ -2,8 +2,6 @@ import switcho from '../index';
 
 const baseObject = { apple: 'newmac', microsoft: 'newsurface', amazon: 'newkindle' };
 
-const x = 5;
-
 /* Object mode */
 // Using values in object
 test('Value -> available targetKey, no default', () => {
