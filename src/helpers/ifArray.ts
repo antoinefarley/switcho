@@ -1,8 +1,6 @@
 import { ICaseArray, ISwitchoParams, TCaseValue } from "../models/models";
 import executeIfFunction from "./executeIfFunction";
 
-const isDefault = (caseMemeber: any) => !Array.isArray(caseMemeber);
-
 /**
  * Handles when 'cases' is an Array
  * @param target Target scenario (string or var) that will trigger a case match
