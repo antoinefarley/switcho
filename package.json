@@ -51,15 +51,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint-staged"
+      "pre-commit": "prettier:fix && yarn lint:fix && yarn test"
     }
-  },
-  "lint-staged": {
-    "src/**/*.ts": [
-      "prettier --write .",
-      "eslint --fix",
-      "jest --config jestconfig.json"
-    ]
   },
   "peerDependencies": {
     "typescript": "^4.3.2"
