@@ -1,6 +1,6 @@
 {
   "name": "switcho",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A simple utility that improves JavaScript's built-in \"switch\" statement.",
   "main": "dist/index.umd.min.js",
   "module": "dist/index.es.js",
