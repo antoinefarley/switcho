@@ -13,4 +13,3 @@ const switcho: ISwitchoParams = (target, cases) =>
   (Array.isArray(cases) ? ifArray : ifObject)(executeIfFunction(target), cases);
 
 export default switcho;
-module.exports = switcho;
