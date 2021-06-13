@@ -1,15 +1,12 @@
 {
-  "name": "my-ts-lib",
-  "version": "1.0.3",
-  "description": "A simple utility that improves JavaScript's built-in \"switch\" statement.",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "build": "tsc"
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "lib": ["es2017", "es7", "es6", "dom"],
+    "declaration": true,
+    "outDir": "dist",
+    "strict": true,
+    "esModuleInterop": true
   },
-  "author": "il20afar <antoinefarley@gmail.com>",
-  "license": "ISC",
-  "devDependencies": {
-    "typescript": "^4.3.2"
-  }
+  "exclude": ["node_modules", "dist"]
 }

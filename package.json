@@ -2,8 +2,8 @@
   "name": "switcho",
   "version": "1.0.3",
   "description": "A simple utility that improves JavaScript's built-in \"switch\" statement.",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "declaration": true,
   "repository": {
     "type": "git",
