@@ -1,4 +1,4 @@
-import switcho from "../../index";
+import { switcho } from "../../index";
 
 enum ESwitchoMode {
   OBJECT = "object",

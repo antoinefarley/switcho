@@ -12,9 +12,5 @@ import { ISwitchoParams } from "./src/models/models";
 const switcho: ISwitchoParams = (target, cases) =>
   (Array.isArray(cases) ? ifArray : ifObject)(executeIfFunction(target), cases);
 
-export default switcho;
+export { switcho };
 module.exports = switcho;
-
-// Testing Only
-let myNums = [1, 2, 3, 1, 4, 1, 2, 5, 3, 4];
-let uniqueNums = switcho("banana", { banana: "hey" });

@@ -1,6 +1,6 @@
 {
   "name": "switcho",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A simple utility that improves JavaScript's built-in \"switch\" statement.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
