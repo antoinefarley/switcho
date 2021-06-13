@@ -1,14 +1,14 @@
 {
-    "compilerOptions": {
-        "target": "es5",
-        "module": "commonjs",
-        "esModuleInterop": true,
-        "declaration": true,
-        "outDir": "./lib",
-        "strict": true
-    },
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
     "esModuleInterop": true,
+    "declaration": true,
+    "outDir": "./lib",
+    "strict": true
+  },
+  "esModuleInterop": true,
 
-    "include": ["src"],
-    "exclude": ["node_modules", "**/__tests__/*"]
+  "include": ["src", "index.ts"],
+  "exclude": ["node_modules", "**/__tests__/*"]
 }

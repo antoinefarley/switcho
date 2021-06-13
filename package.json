@@ -1,9 +1,10 @@
 {
   "name": "switcho",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple utility that improves JavaScript's built-in \"switch\" statement.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "declaration": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/il20afar/switcho.git"

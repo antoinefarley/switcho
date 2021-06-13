@@ -1,7 +1,7 @@
-import executeIfFunction from "./helpers/executeIfFunction";
-import { ifArray } from "./helpers/ifArray";
-import { ifObject } from "./helpers/ifObject";
-import { ISwitchoParams } from "./models/models";
+import executeIfFunction from "./src/helpers/executeIfFunction";
+import { ifArray } from "./src/helpers/ifArray";
+import { ifObject } from "./src/helpers/ifObject";
+import { ISwitchoParams } from "./src/models/models";
 
 /**
  * Switcho => A prettier, more functional way to handle exclusive cases
@@ -14,3 +14,7 @@ const switcho: ISwitchoParams = (target, cases) =>
 
 export default switcho;
 module.exports = switcho;
+
+// Testing Only
+let myNums = [1, 2, 3, 1, 4, 1, 2, 5, 3, 4];
+let uniqueNums = switcho("banana", { banana: "hey" });
