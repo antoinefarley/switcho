@@ -12,5 +12,5 @@ import { ISwitchoParams } from "./models/models";
 const switcho: ISwitchoParams = (target, cases) =>
   (Array.isArray(cases) ? ifArray : ifObject)(executeIfFunction(target), cases);
 
-export { switcho };
+export default switcho;
 module.exports = switcho;

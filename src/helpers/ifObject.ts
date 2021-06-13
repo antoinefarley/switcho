@@ -11,13 +11,10 @@ export const ifObject: ISwitchoParams = (
   target: TCaseValue,
   cases: ICaseObj
 ) => {
-  const isInCases = {
-    target: cases.hasOwnProperty(target),
-    default: cases.hasOwnProperty("default"),
-  };
-  return isInCases.target
-    ? executeIfFunction(cases[target])
-    : isInCases.default
-    ? executeIfFunction(cases.default)
-    : null;
+  if (cases.hasOwnProperty(target)) {
+    return executeIfFunction(cases[target]);
+  } else if (cases.hasOwnProperty("default")) {
+    return executeIfFunction(cases.default);
+  }
+  return null;
 };

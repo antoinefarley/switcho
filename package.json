@@ -1,9 +1,13 @@
 {
   "name": "switcho",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A simple utility that improves JavaScript's built-in \"switch\" statement.",
-  "main": "dist/index.js",
+  "main": "dist/index.umd.min.js",
+  "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "declaration": true,
   "repository": {
     "type": "git",
@@ -24,16 +28,15 @@
   "devDependencies": {
     "@types/jest": "^26.0.23",
     "jest": "^26.6.3",
-    "ts-jest": "^26.5.6"
+    "rollup": "^2.51.2",
+    "ts-jest": "^26.5.6",
+    "typescript": "^4.3.2"
   },
-  "files": [
-    "lib/**/*"
-  ],
   "scripts": {
     "build": "tsc",
     "test": "jest --config jestconfig.json",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
-    "lint": "eslint ."
+    "lint": "eslint src/ --ext .ts"
   },
   "husky": {
     "hooks": {
@@ -46,7 +49,7 @@
       "eslint --fix"
     ]
   },
-  "dependencies": {
+  "peerDependencies": {
     "typescript": "^4.3.2"
   }
 }
