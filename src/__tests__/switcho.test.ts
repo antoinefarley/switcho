@@ -268,3 +268,31 @@ doTest(
     'Montreal',
   );
 })();
+
+(() => {
+  const num1 = 150;
+  const num2 = 25;
+  doTest(
+    ESwitchoMode.ARRAY,
+    {
+      target: EValueType.EXPRESSION,
+      casesOperand: {
+        left: EValueType.FUNCTION,
+        right: EValueType.VALUE,
+      },
+    },
+    {
+      target: EAvailability.AVAILABLE,
+      default: EAvailability.UNAVAILABLE,
+    },
+    switcho(
+      () => num1 + num2,
+      [
+        [() => 1, 'Small'],
+        [() => 175, 'Medium'],
+        [() => 5000, 'Large'],
+      ],
+    ),
+    'Medium',
+  );
+})();
