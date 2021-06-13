@@ -1,7 +1,7 @@
 {
   "name": "switcho",
   "version": "1.0.0",
-  "description": "A simple utility that improves the built-in \"switch\" statement.",
+  "description": "A simple utility that improves JavaScript's built-in \"switch\" statement.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "repository": {
@@ -11,9 +11,10 @@
   "keywords": [
     "switch",
     "cases",
-    "ifelse"
+    "if",
+    "else"
   ],
-  "author": "il20afar",
+  "author": "il20afar <antoinefarley@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/il20afar/switcho/issues"
@@ -21,13 +22,7 @@
   "homepage": "https://github.com/il20afar/switcho#readme",
   "devDependencies": {
     "@types/jest": "^26.0.23",
-    "@typescript-eslint/eslint-plugin": "^4.23.0",
-    "@typescript-eslint/parser": "^4.23.0",
-    "eslint": "^7.26.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^3.4.0",
     "jest": "^26.6.3",
-    "prettier": "^2.3.0",
     "ts-jest": "^26.5.6"
   },
   "files": [
@@ -37,7 +32,7 @@
     "build": "tsc",
     "test": "jest --config jestconfig.json",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
-    "lint": "eslint '*/**/*.{js,ts}' --quiet --fix"
+    "lint": "eslint ."
   },
   "husky": {
     "hooks": {
@@ -49,5 +44,8 @@
       "prettier --write . ",
       "eslint --fix"
     ]
+  },
+  "dependencies": {
+    "typescript": "^4.3.2"
   }
 }

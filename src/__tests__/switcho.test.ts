@@ -1,64 +1,141 @@
-import switcho from '../index';
+import switcho from "../index";
 
-const baseObject = { apple: 'newmac', microsoft: 'newsurface', amazon: 'newkindle' };
+enum ESwitchoMode {
+  OBJECT = "object",
+  ARRAY = "array",
+}
+
+enum ETestType {
+  VALUE = "Value",
+  VARIABLE = "Variable",
+  FUNCTION = "Function",
+}
+
+enum ETargetAvailability {
+  AVAILABLE = "available",
+  UNAVAILABLE = "unavailable",
+}
+
+enum EDefaultAvailability {
+  WITH = "with",
+  WITHOUT = "without",
+}
+
+const baseObject = {
+  apple: "newmac",
+  microsoft: "newsurface",
+  amazon: "newkindle",
+};
+
+const doTest = (
+  switchoMode: ESwitchoMode,
+  testType: ETestType,
+  targetAvailability: ETargetAvailability,
+  defaultAvailability: EDefaultAvailability,
+  switchoInstance: any,
+  expectToBe: any
+) => {
+  test(`As [${switchoMode}] ${testType} -> ${targetAvailability} ${defaultAvailability} default`, () => {
+    expect(switchoInstance).toBe(expectToBe);
+  });
+};
 
 /* Object mode */
 // Using values in object
-test('Value -> available targetKey, no default', () => {
-  expect(switcho('apple', baseObject)).toBe('newmac');
-});
+doTest(
+  ESwitchoMode.OBJECT,
+  ETestType.VALUE,
+  ETargetAvailability.AVAILABLE,
+  EDefaultAvailability.WITHOUT,
+  switcho("apple", baseObject),
+  "newmac"
+);
 
-test('Value -> unavailable targetKey, no default', () => {
-  expect(switcho('hello', baseObject)).toBe(null);
-});
+doTest(
+  ESwitchoMode.OBJECT,
+  ETestType.VALUE,
+  ETargetAvailability.UNAVAILABLE,
+  EDefaultAvailability.WITHOUT,
+  switcho("facebook", baseObject),
 
-test('Value -> available targetKey, default', () => {
-  expect(switcho('apple', { default: 'hey', ...baseObject })).toBe('newmac');
-});
+  null
+);
 
-test('Value -> unavailable targetKey, default', () => {
-  expect(switcho('hello', { default: 'hey', ...baseObject })).toBe('hey');
-});
+doTest(
+  ESwitchoMode.OBJECT,
+  ETestType.VALUE,
+  ETargetAvailability.AVAILABLE,
+  EDefaultAvailability.WITH,
+  switcho("apple", { default: "hey", ...baseObject }),
+  "newmac"
+);
+
+doTest(
+  ESwitchoMode.OBJECT,
+  ETestType.VALUE,
+  ETargetAvailability.UNAVAILABLE,
+  EDefaultAvailability.WITH,
+  switcho("facebook", { default: "hey", ...baseObject }),
+  "hey"
+);
 
 // Using functions in object
-test('Function -> available targetKey, no default', () => {
-  expect(switcho('apple', baseObject)).toBe('newmac');
-});
+doTest(
+  ESwitchoMode.OBJECT,
+  ETestType.FUNCTION,
+  ETargetAvailability.AVAILABLE,
+  EDefaultAvailability.WITHOUT,
+  switcho("apple", { ...baseObject, apple: () => "newmac" }),
+  "newmac"
+);
 
 /* Array mode */
-test('Variable -> available targetCase, no default', () => {
+(() => {
   const myVar = 30027;
-  expect(
+  doTest(
+    ESwitchoMode.ARRAY,
+    ETestType.VARIABLE,
+    ETargetAvailability.AVAILABLE,
+    EDefaultAvailability.WITHOUT,
     switcho(myVar, [
-      [34, 'Paris'],
-      [30027, 'London'],
-      [100000, 'Tokyo'],
+      [34, "Paris"],
+      [30027, "London"],
+      [100000, "Tokyo"],
     ]),
-  ).toBe('London');
-});
-
-/* Array mode */
-test('Expression -> AND gate', () => {
-  const isTrue = true;
-  const isFalse = false;
-  expect(
-    switcho(true, [
-      [isTrue && isFalse, 'Paris'],
-      [isTrue || isFalse, () => 'London'],
-      [isFalse, 'Tokyo'],
+    "London"
+  );
+})();
+(() => {
+  const num = 1140;
+  const add = 1224;
+  doTest(
+    ESwitchoMode.ARRAY,
+    ETestType.FUNCTION,
+    ETargetAvailability.AVAILABLE,
+    EDefaultAvailability.WITH,
+    switcho(num + add, [
+      [123, "Paris"],
+      [2364, () => "London"],
+      [0, "Tokyo"],
+      "Montreal",
     ]),
-  ).toBe('London');
-});
-
-/* Array mode */
-test('Expression -> AND gate false', () => {
-  const isTrue = true;
-  const isFalse = false;
-  expect(
-    switcho(false, [
-      [isTrue && isFalse, 'Paris'],
-      [isTrue || isFalse, () => 'London'],
-      [isFalse, 'Tokyo'],
+    "London"
+  );
+})();
+(() => {
+  const num = 1140;
+  const add = 1224;
+  doTest(
+    ESwitchoMode.ARRAY,
+    ETestType.FUNCTION,
+    ETargetAvailability.UNAVAILABLE,
+    EDefaultAvailability.WITH,
+    switcho(250, [
+      [123, "Paris"],
+      [num + add, () => "London"],
+      [0, "Tokyo"],
+      "Montreal",
     ]),
-  ).toBe('Paris');
-});
+    "Montreal"
+  );
+})();
