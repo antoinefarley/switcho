@@ -1,24 +1,24 @@
-import switcho from "../index";
+import switcho from '../index';
 
 enum ESwitchoMode {
-  OBJECT = "object",
-  ARRAY = "array ",
+  OBJECT = 'object',
+  ARRAY = 'array ',
 }
 
 enum EValueType {
-  VALUE = "val",
-  VARIABLE = "var",
-  EXPRESSION = "exp",
-  FUNCTION = "fun",
+  VALUE = 'val',
+  VARIABLE = 'var',
+  EXPRESSION = 'exp',
+  FUNCTION = 'fun',
 }
 
 enum EAvailability {
-  AVAILABLE = "+",
-  UNAVAILABLE = "-",
+  AVAILABLE = '+',
+  UNAVAILABLE = '-',
 }
 
 const fmtHeaderValue = (header: string, value?: string) =>
-  [`\x1b[34m`, header, ": ", `\x1b[0m`, value].join("");
+  [`\x1b[34m`, header, ': ', `\x1b[0m`, value].join('');
 
 const doTest = (
   mode: ESwitchoMode,
@@ -33,24 +33,24 @@ const doTest = (
     target: EAvailability;
     default: EAvailability;
   },
-  switchoInstance: any,
-  expectToBe: any
+  switchoInstance: unknown,
+  expectToBe: unknown,
 ) => {
   const testName = [
-    fmtHeaderValue("MODE", mode),
+    fmtHeaderValue('MODE', mode),
     fmtHeaderValue(
-      "TARGET_CASE_TYPES",
+      'TARGET_CASE_TYPES',
       `[${[
         targetCasesTypes.target,
         targetCasesTypes.casesOperand.left,
         targetCasesTypes.casesOperand.right,
-      ].join(", ")}]`
+      ].join(', ')}]`,
     ),
     fmtHeaderValue(
-      "AVAILABILITY",
-      `[${[availability.target, availability.default].join(", ")}]`
+      'AVAILABILITY',
+      `[${[availability.target, availability.default].join(', ')}]`,
     ),
-  ].join(" ");
+  ].join(' ');
   test(`${testName}`, () => {
     expect(switchoInstance).toBe(expectToBe);
   });
@@ -74,12 +74,12 @@ const doTest = (
       target: EAvailability.AVAILABLE,
       default: EAvailability.UNAVAILABLE,
     },
-    switcho("apple", {
-      apple: "newmac",
-      microsoft: "newsurface",
-      amazon: "newkindle",
+    switcho('apple', {
+      apple: 'newmac',
+      microsoft: 'newsurface',
+      amazon: 'newkindle',
     }),
-    "newmac"
+    'newmac',
   );
 
   doTest(
@@ -89,12 +89,12 @@ const doTest = (
       target: EAvailability.UNAVAILABLE,
       default: EAvailability.UNAVAILABLE,
     },
-    switcho("facebook", {
-      apple: "newmac",
-      microsoft: "newsurface",
-      amazon: "newkindle",
+    switcho('facebook', {
+      apple: 'newmac',
+      microsoft: 'newsurface',
+      amazon: 'newkindle',
     }),
-    null
+    null,
   );
 
   doTest(
@@ -104,13 +104,13 @@ const doTest = (
       target: EAvailability.AVAILABLE,
       default: EAvailability.AVAILABLE,
     },
-    switcho("apple", {
-      apple: "newmac",
-      microsoft: "newsurface",
-      amazon: "newkindle",
-      default: "hey",
+    switcho('apple', {
+      apple: 'newmac',
+      microsoft: 'newsurface',
+      amazon: 'newkindle',
+      default: 'hey',
     }),
-    "newmac"
+    'newmac',
   );
 
   doTest(
@@ -120,13 +120,13 @@ const doTest = (
       target: EAvailability.UNAVAILABLE,
       default: EAvailability.AVAILABLE,
     },
-    switcho("facebook", {
-      apple: "newmac",
-      microsoft: "newsurface",
-      amazon: "newkindle",
-      default: "hey",
+    switcho('facebook', {
+      apple: 'newmac',
+      microsoft: 'newsurface',
+      amazon: 'newkindle',
+      default: 'hey',
     }),
-    "hey"
+    'hey',
   );
 })();
 
@@ -144,12 +144,12 @@ doTest(
     target: EAvailability.AVAILABLE,
     default: EAvailability.UNAVAILABLE,
   },
-  switcho("apple", {
-    apple: () => "newmac",
-    microsoft: "newsurface",
-    amazon: "newkindle",
+  switcho('apple', {
+    apple: () => 'newmac',
+    microsoft: 'newsurface',
+    amazon: 'newkindle',
   }),
-  "newmac"
+  'newmac',
 );
 doTest(
   ESwitchoMode.OBJECT,
@@ -164,12 +164,12 @@ doTest(
     target: EAvailability.AVAILABLE,
     default: EAvailability.UNAVAILABLE,
   },
-  switcho(() => "apple", {
-    apple: () => "newmac",
-    microsoft: "newsurface",
-    amazon: "newkindle",
+  switcho(() => 'apple', {
+    apple: () => 'newmac',
+    microsoft: 'newsurface',
+    amazon: 'newkindle',
   }),
-  "newmac"
+  'newmac',
 );
 
 /* Array mode */
@@ -189,11 +189,11 @@ doTest(
       default: EAvailability.UNAVAILABLE,
     },
     switcho(myVar, [
-      [34, "Paris"],
-      [30027, "London"],
-      [100000, "Tokyo"],
+      [34, 'Paris'],
+      [30027, 'London'],
+      [100000, 'Tokyo'],
     ]),
-    "London"
+    'London',
   );
 })();
 (() => {
@@ -210,12 +210,12 @@ doTest(
       target: EAvailability.UNAVAILABLE,
       default: EAvailability.UNAVAILABLE,
     },
-    switcho("hello", [
-      [34, "Paris"],
-      [30027, "London"],
-      [100000, "Tokyo"],
+    switcho('hello', [
+      [34, 'Paris'],
+      [30027, 'London'],
+      [100000, 'Tokyo'],
     ]),
-    null
+    null,
   );
 })();
 (() => {
@@ -235,12 +235,12 @@ doTest(
       default: EAvailability.UNAVAILABLE,
     },
     switcho(num + add, [
-      [123, "Paris"],
-      [2364, () => "London"],
-      [0, "Tokyo"],
-      "Montreal",
+      [123, 'Paris'],
+      [2364, () => 'London'],
+      [0, 'Tokyo'],
+      'Montreal',
     ]),
-    "London"
+    'London',
   );
 })();
 (() => {
@@ -260,11 +260,11 @@ doTest(
       default: EAvailability.AVAILABLE,
     },
     switcho(250, [
-      [123, "Paris"],
-      [num + add, () => "London"],
-      [0, "Tokyo"],
-      () => "Montreal",
+      [123, 'Paris'],
+      [num + add, () => 'London'],
+      [0, 'Tokyo'],
+      () => 'Montreal',
     ]),
-    "Montreal"
+    'Montreal',
   );
 })();
