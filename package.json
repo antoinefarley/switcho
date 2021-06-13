@@ -51,14 +51,15 @@
     "prettier": "prettier 'src/**/*.ts'",
     "prettier:fix": "prettier --write 'src/**/*.ts'",
     "lint": "eslint 'src/**/*.ts'",
-    "lint:fix": "eslint 'src/**/*.ts' --fix"
+    "lint:fix": "eslint 'src/**/*.ts' --fix",
+    "prepare": "husky install"
   },
   "peerDependencies": {
     "typescript": "^4.3.2"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn prettier:fix && yarn lint:fix && yarn test"
+      "pre-commit": "echo \"[Husky] pre-commit\" && yarn prettier:fix && yarn lint:fix && yarn test"
     }
   }
 }

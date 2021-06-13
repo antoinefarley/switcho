@@ -11,4 +11,4 @@ interface ISwitchoParams {
   (target: TCaseValue, cases: ICaseObj | ICaseArray): TCaseValue;
 }
 
-export { TCaseValue, ICaseObj, ICaseArray, ISwitchoParams };
+export { ICaseArray, ICaseObj, ISwitchoParams, TCaseValue };
