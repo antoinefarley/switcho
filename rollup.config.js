@@ -10,7 +10,10 @@ export default [
       file: "dist/index.es.js",
       format: "es",
     },
-    plugins: [typescript(), babel({ extensions: [".ts"] })],
+    plugins: [
+      typescript(),
+      babel({ extensions: [".ts"], babelHelpers: "bundled" }),
+    ],
   },
 
   // UMD
@@ -24,8 +27,12 @@ export default [
     },
     plugins: [
       typescript(),
-      babel({ extensions: [".ts"], exclude: "node_modules/**" }),
-      terser(),
+      babel({
+        extensions: [".ts"],
+        exclude: "node_modules/**",
+        babelHelpers: "bundled",
+      }),
+      terser({ compress: true }),
     ],
   },
 ];
