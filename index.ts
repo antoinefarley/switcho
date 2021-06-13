@@ -1,7 +1,7 @@
-import executeIfFunction from "./src/helpers/executeIfFunction";
-import { ifArray } from "./src/helpers/ifArray";
-import { ifObject } from "./src/helpers/ifObject";
-import { ISwitchoParams } from "./src/models/models";
+import executeIfFunction from "./helpers/executeIfFunction";
+import { ifArray } from "./helpers/ifArray";
+import { ifObject } from "./helpers/ifObject";
+import { ISwitchoParams } from "./models/models";
 
 /**
  * Switcho => A prettier, more functional way to handle exclusive cases
